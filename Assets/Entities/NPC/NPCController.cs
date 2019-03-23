@@ -70,7 +70,10 @@ public class NPCController : MonoBehaviour
         float distance = Vector3.Distance(transform.position, _player.transform.position);
         if (distance <= AWARANESS_RADIUS_NORMAL)
         {
-            MoveViaAgent(_player);
+            if(distance< FOLLOW_PLAYER_DISTANCE_NORMAL)
+                StopAndResetAgent();
+            else
+                MoveViaAgent(_player);
         }
         else
         {

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -9,7 +8,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private static float SPEED = 1f;
-    private static float MOUSE_CURSOR_THRESHOLD = 0.05f;
+    public static float MOUSE_CURSOR_THRESHOLD = 0.09f;
     private Vector2 TEMP_velocity = new Vector2();
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -41,7 +40,7 @@ public class PlayerController : MonoBehaviour
         TEMP_velocity.Set(horizontal * SPEED, vertical * SPEED);
         _rigidbody.velocity = TEMP_velocity;
 
-        if (System.Math.Abs(horizontal) > Mathf.Epsilon || System.Math.Abs(vertical) > Mathf.Epsilon)
+        if (Mathf.Abs(horizontal) > Mathf.Epsilon || Mathf.Abs(vertical) > Mathf.Epsilon)
         {
             if (!_moving)
             {
