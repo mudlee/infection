@@ -20,6 +20,7 @@ public class NPCController : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private GameObject _player;
     private SAP2DAgent _agent;
+    private GameController _gameController;
 
     private enum Direction { LEFT, RIGHT, TOP, BOTTOM, DONT_MOVE };
     // MOVEMENT
@@ -38,12 +39,18 @@ public class NPCController : MonoBehaviour
         _player = GameObject.FindWithTag("Player");
         _currentTarget = _player.GetHashCode();
         _agent = GetComponent<SAP2DAgent>();
+        _gameController=FindObjectOfType<GameController>();
     }
 
     private void Start()
     {
         _agent.Target = _player.transform;
         _agent.CanMove = false;
+
+        if (_infected)
+            _gameController.SendMessage("NPCInfectedSpawned");
+        else
+            _gameController.SendMessage("NPCNormalSpawned");
 
         _npcs.Add(_player);
         foreach(GameObject npc in GameObject.FindGameObjectsWithTag("NPC_NORMAL"))
@@ -214,6 +221,7 @@ public class NPCController : MonoBehaviour
                 GameObject infectedNPC = Instantiate(_infectedPrefab) as GameObject;
                 infectedNPC.transform.position = transform.position;
                 gameObject.SetActive(false);
+                _gameController.SendMessage("NPCInfected");
                 return;
             }
         }
