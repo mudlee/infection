@@ -1,0 +1,7 @@
+﻿public enum SoundType
+{
+    BACKGROUND_MUSIC,
+    BACKGROUND_MUSIC2,
+    RANDOM_SCREAM,
+    DOOR_OPEN_CLOSE
+}

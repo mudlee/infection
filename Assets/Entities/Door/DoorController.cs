@@ -7,11 +7,13 @@ public class DoorController : MonoBehaviour
     private bool _open = true;
     private BoxCollider2D _collider;
     private GameObject _SAP2D;
+    private SoundPlayer _soundPlayer;
 
     private void Start()
     {
         Close(true);
         _SAP2D = GameObject.FindWithTag("SAP2D");
+        _soundPlayer = FindObjectOfType<SoundPlayer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,12 +30,20 @@ public class DoorController : MonoBehaviour
 
     private void Close(bool dontCalculateAStarColliders = false)
     {
+        if (!_open)
+            return;
+
         HandleDoorVisual(false, true, dontCalculateAStarColliders);
+        _soundPlayer?.Play(SoundType.DOOR_OPEN_CLOSE);
         _open = false;
     }
 
     private void Open()
     {
+        if (_open)
+            return;
+
+        _soundPlayer?.Play(SoundType.DOOR_OPEN_CLOSE);
         HandleDoorVisual(true, false, false);
         _open = true;
     }
