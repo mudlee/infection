@@ -47,6 +47,9 @@ TagManager:
   - name: Ground
     uniqueID: 570444807
     locked: 0
+  - name: Lamp
+    uniqueID: 3696810417
+    locked: 0
   - name: NPC
     uniqueID: 3439107489
     locked: 0
@@ -55,7 +58,4 @@ TagManager:
     locked: 0
   - name: Door
     uniqueID: 120014829
-    locked: 0
-  - name: Lamp
-    uniqueID: 3696810417
     locked: 0
