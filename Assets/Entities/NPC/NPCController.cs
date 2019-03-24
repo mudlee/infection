@@ -22,7 +22,7 @@ public class NPCController : MonoBehaviour
     private SAP2DAgent _agent;
     private GameController _gameController;
 
-    private enum Direction { LEFT, RIGHT, TOP, BOTTOM, DONT_MOVE };
+    public enum Direction { LEFT, RIGHT, UP, DOWN, DONT_MOVE };
     // MOVEMENT
     private Direction _currentDirection;
     private int _remainingMovementTime = 0;
@@ -112,16 +112,19 @@ public class NPCController : MonoBehaviour
         foreach (GameObject npc in _npcs)
         {
             if (!npc.activeSelf)
-            {
                 continue;
-            }
+
             float distance = Vector3.Distance(transform.position, npc.transform.position);
             if (distance <= AWARANESS_RADIUS_INFECTED)
             {
                 if (possibleTarget == null || distance < possibleTargetDistance)
                 {
-                    possibleTarget = npc;
-                    possibleTargetDistance = distance;
+                    PlayerController pc = npc.GetComponent<PlayerController>();
+                    if(pc==null || pc!=null && pc._moving) // don't follow the player if not moving
+                    {
+                        possibleTarget = npc;
+                        possibleTargetDistance = distance;
+                    }
                 }
             }
         }
@@ -219,7 +222,7 @@ public class NPCController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!_infected)
+        if (!_infected)
         {
             if (collision.gameObject.tag == "NPC")
             {
@@ -231,6 +234,12 @@ public class NPCController : MonoBehaviour
             }
         }
 
+        _collidedDirection = _currentDirection;
+        UpdateDirection(Direction.DONT_MOVE);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         _collidedDirection = _currentDirection;
         UpdateDirection(Direction.DONT_MOVE);
     }
@@ -252,18 +261,18 @@ public class NPCController : MonoBehaviour
     {
         _animator.SetBool("WalkingRight", _currentDirection == Direction.RIGHT);
         _animator.SetBool("WalkingLeft", _currentDirection == Direction.LEFT);
-        _animator.SetBool("WalkingUp", _currentDirection == Direction.TOP);
-        _animator.SetBool("WalkingDown", _currentDirection == Direction.BOTTOM);
+        _animator.SetBool("WalkingUp", _currentDirection == Direction.UP);
+        _animator.SetBool("WalkingDown", _currentDirection == Direction.DOWN);
     }
 
     private void UpdateVelocity()
     {
         switch (_currentDirection)
         {
-            case Direction.BOTTOM:
+            case Direction.DOWN:
                 _velocity.Set(0, -SPEED);
                 break;
-            case Direction.TOP:
+            case Direction.UP:
                 _velocity.Set(0, SPEED);
                 break;
             case Direction.LEFT:

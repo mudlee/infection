@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -7,12 +7,13 @@
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
-    private static float SPEED = 1.4f;
     public static float MOUSE_CURSOR_THRESHOLD = 0.09f;
+    public bool _moving;
+
+    private static float SPEED = 1.4f;
     private Vector2 TEMP_velocity = new Vector2();
     private Rigidbody2D _rigidbody;
     private Animator _animator;
-    private bool _moving;
 
     private void Start()
     {
@@ -23,6 +24,14 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleMove();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "NPC")
+        {
+            SceneManager.LoadScene("Died");
+        }
     }
 
     private void HandleMove()
@@ -45,16 +54,11 @@ public class PlayerController : MonoBehaviour
             if (!_moving)
             {
                 _moving = true;
-                /*if (_soundPlayer != null)
-                {
-                    _stepSoundAudioSource = _soundPlayer.Play(Sound.PLAYER_STEP);....
-                }*/
             }
         }
         else if (_moving)
         {
             _moving = false;
-            //_soundPlayer?.Stop(_stepSoundAudioSource);
         }
     }
 

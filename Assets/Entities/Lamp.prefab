@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4355615497891641174}
   - component: {fileID: 4355615497891641175}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -598156879
-  m_SortingLayer: 5
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 463357076261050884, guid: e90d5a84b1a3c4ad882c2a04e95040a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4355615498101335081}
   - component: {fileID: 4355615498101335080}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

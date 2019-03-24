@@ -83,25 +83,36 @@ PrefabInstance:
       propertyPath: MovementSpeed
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 4559582159459115802, guid: 256bccf53b6a7463d8360d481dc2c90e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8466672319293531365, guid: 79bf15d22c91d4dc3b4a4558c356d742,
+        type: 3}
+    - target: {fileID: 4559582159459115803, guid: 256bccf53b6a7463d8360d481dc2c90e,
+        type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4559582159459115806, guid: 256bccf53b6a7463d8360d481dc2c90e,
         type: 3}
       propertyPath: m_Offset.x
-      value: -0.004095435
+      value: -0.0064344406
       objectReference: {fileID: 0}
     - target: {fileID: 4559582159459115806, guid: 256bccf53b6a7463d8360d481dc2c90e,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.31544566
+      value: 0.27334023
       objectReference: {fileID: 0}
     - target: {fileID: 4559582159459115806, guid: 256bccf53b6a7463d8360d481dc2c90e,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.0050258636
+      value: -0.0019917488
       objectReference: {fileID: 0}
     - target: {fileID: 4559582159459115806, guid: 256bccf53b6a7463d8360d481dc2c90e,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.64706993
+      value: 0.5956068
       objectReference: {fileID: 0}
     - target: {fileID: 4559582159459115807, guid: 256bccf53b6a7463d8360d481dc2c90e,
         type: 3}
@@ -109,12 +120,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 22100000, guid: 299dc5bc9e9714a5fba4c8724f7b22ab,
         type: 2}
-    - target: {fileID: 4559582159459115802, guid: 256bccf53b6a7463d8360d481dc2c90e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 8466672319293531365, guid: 79bf15d22c91d4dc3b4a4558c356d742,
-        type: 3}
     - target: {fileID: 4559582159459115800, guid: 256bccf53b6a7463d8360d481dc2c90e,
         type: 3}
       propertyPath: infected

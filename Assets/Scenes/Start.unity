@@ -10113,7 +10113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -34.8}
+  m_AnchoredPosition: {x: 0, y: 50.2}
   m_SizeDelta: {x: -160, y: 348.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1650563110
@@ -10154,9 +10154,9 @@ MonoBehaviour:
     at least three, and go to the evacuation room.
 
 
-    Tip1: infecteds cannot see you if you don''t move
+    Tip1: infecteds won''t attack you if you don''t move
 
-    Tip2: survivors will follow you, but don''t run fast!
+    Tip2: survivors will follow you, but don''t run fast, they are slow.
 
 
     Important: if a survivor is closer to an infected than you, she will be the target
@@ -10208,7 +10208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 95}
+  m_AnchoredPosition: {x: 0, y: 180}
   m_SizeDelta: {x: -100, y: 89.899994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1858237846
@@ -15040,7 +15040,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -175}
+  m_AnchoredPosition: {x: 0, y: -66}
   m_SizeDelta: {x: 854.2, y: 220.70001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2062267166
