@@ -39,7 +39,7 @@ public class NPCController : MonoBehaviour
         _player = GameObject.FindWithTag("Player");
         _currentTarget = _player.GetHashCode();
         _agent = GetComponent<SAP2DAgent>();
-        _gameController=FindObjectOfType<GameController>();
+        _gameController = FindObjectOfType<GameController>();
     }
 
     private void Start()
@@ -53,7 +53,7 @@ public class NPCController : MonoBehaviour
             _gameController.SendMessage("NPCNormalSpawned");
 
         _npcs.Add(_player);
-        foreach(GameObject npc in GameObject.FindGameObjectsWithTag("NPC_NORMAL"))
+        foreach (GameObject npc in GameObject.FindGameObjectsWithTag("NPC_NORMAL"))
         {
             _npcs.Add(npc);
         }
@@ -77,7 +77,7 @@ public class NPCController : MonoBehaviour
         float distance = Vector3.Distance(transform.position, _player.transform.position);
         if (distance <= AWARANESS_RADIUS_NORMAL)
         {
-            if(distance< FOLLOW_PLAYER_DISTANCE_NORMAL)
+            if (distance < FOLLOW_PLAYER_DISTANCE_NORMAL)
                 StopAndResetAgent();
             else
                 MoveViaAgent(_player);
@@ -116,9 +116,9 @@ public class NPCController : MonoBehaviour
                 continue;
             }
             float distance = Vector3.Distance(transform.position, npc.transform.position);
-            if(distance<=AWARANESS_RADIUS_INFECTED)
+            if (distance <= AWARANESS_RADIUS_INFECTED)
             {
-                if(possibleTarget==null || distance < possibleTargetDistance)
+                if (possibleTarget == null || distance < possibleTargetDistance)
                 {
                     possibleTarget = npc;
                     possibleTargetDistance = distance;
@@ -126,7 +126,7 @@ public class NPCController : MonoBehaviour
             }
         }
 
-        if(possibleTarget == null) // no target available in this frame, let's just cruise
+        if (possibleTarget == null) // no target available in this frame, let's just cruise
         {
             Wondering();
         }
@@ -161,33 +161,38 @@ public class NPCController : MonoBehaviour
         _animator.SetBool("WalkingUp", false);
         _animator.SetBool("WalkingDown", false);
 
-        if (_agent.direction.x > 0 && _agent.direction.y > 0)
+        if (_agent.direction.x > 0 && _agent.direction.y >= 0 || _agent.direction.x >= 0 && _agent.direction.y > 0)
         {
             if (_agent.direction.x > _agent.direction.y)
                 _animator.SetBool("WalkingRight", true);
             else
                 _animator.SetBool("WalkingUp", true);
         }
-        else if (_agent.direction.x < 0 && _agent.direction.y < 0)
+        else if (_agent.direction.x < 0 && _agent.direction.y <= 0 || _agent.direction.x <= 0 && _agent.direction.y < 0)
         {
             if (_agent.direction.x < _agent.direction.y)
                 _animator.SetBool("WalkingLeft", true);
             else
                 _animator.SetBool("WalkingDown", true);
         }
-        else if (_agent.direction.x < 0 && _agent.direction.y > 0)
+        else if (_agent.direction.x < 0 && _agent.direction.y >= 0 || _agent.direction.x <= 0 && _agent.direction.y > 0)
         {
             if (Mathf.Abs(_agent.direction.x) > _agent.direction.y)
                 _animator.SetBool("WalkingLeft", true);
             else
                 _animator.SetBool("WalkingUp", true);
         }
-        else if (_agent.direction.x > 0 && _agent.direction.y < 0)
+        else if (_agent.direction.x > 0 && _agent.direction.y <= 0 || _agent.direction.x >= 0 && _agent.direction.y < 0)
         {
             if (Mathf.Abs(_agent.direction.y) < _agent.direction.x)
                 _animator.SetBool("WalkingRight", true);
             else
                 _animator.SetBool("WalkingDown", true);
+        }
+        else
+        {
+            _velocity.Set(0, 0);
+            _rigidbody.velocity = _velocity;
         }
     }
 

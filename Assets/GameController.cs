@@ -14,8 +14,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
         _soundPlayer = FindObjectOfType<SoundPlayer>();
-        _soundPlayer?.Play(SoundType.BACKGROUND_MUSIC);
-        _soundPlayer?.Play(SoundType.BACKGROUND_MUSIC2);
         RandomScream();
     }
 
@@ -42,7 +40,7 @@ public class GameController : MonoBehaviour
 
     public void NPCRescued()
     {
-        rescued++;
-        _rescuedCnt.text = "Rescued: " + rescued + "/3";
+        _normalCnt.text = (--normal).ToString();
+        _rescuedCnt.text = "Rescued: " + (++rescued) + "/3";
     }
 }

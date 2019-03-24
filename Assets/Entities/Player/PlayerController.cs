@@ -7,7 +7,7 @@
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
-    private static float SPEED = 1f;
+    private static float SPEED = 1.4f;
     public static float MOUSE_CURSOR_THRESHOLD = 0.09f;
     private Vector2 TEMP_velocity = new Vector2();
     private Rigidbody2D _rigidbody;
